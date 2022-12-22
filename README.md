@@ -1,3 +1,2 @@
-install resources
-	npm install --global create-react-app mocha
-		mocha = testing library
+to Run dev server (scripts section in package.json)
+---$ npm run dev
