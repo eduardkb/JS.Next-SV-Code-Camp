@@ -9,3 +9,4 @@ to Run dev server (scripts section in package.json)
 TODO
 
 - fix logo in header (header.js)
+  - not loading png files
