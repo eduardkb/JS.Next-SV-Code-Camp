@@ -5,3 +5,7 @@ Project at:
 
 to Run dev server (scripts section in package.json)
 ---$ npm run dev
+
+TODO
+
+- fix logo in header (header.js)
