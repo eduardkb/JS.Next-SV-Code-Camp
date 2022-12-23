@@ -4,7 +4,7 @@ function Header({ theme }) {
       <div className="container mobile-container">
         <div className="d-flex justify-content-between">
           <div>
-            <img alt="SVCC Home Page" src={"/images/speaker-99999.jpg"} />
+            <img alt="SVCC Home Page" src={"/images/SVCClogo.jpg"} />
           </div>
           <div className="light">
             <h4 className="header-title">Silicon Valley Code Camp</h4>
