@@ -56,7 +56,6 @@ function SpeakerDemographics({ first, last, bio, company, twitterHandle }) {
 
 function Speaker({ speaker }) {
   const { id, first, last, sessions } = speaker;
-  console.log(`DEB. ${id} | ${first} | ${last} | ${sessions}`);
   return (
     <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
       <div className="card card-heigth p-4 mt-4">
