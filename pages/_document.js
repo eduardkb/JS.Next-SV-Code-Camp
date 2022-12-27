@@ -28,6 +28,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link href="css/local-styles.css" rel="stylesheet" />
+          <link rel="icon" type="image/png" href="/images/pageIcon.png"></link>
         </Head>
         <body>
           <Main />
