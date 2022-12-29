@@ -1,4 +1,11 @@
-CONFERENCE SPEAKER APP
+# CONFERENCE SPEAKER APP
+
+Manually starting next.js app
+
+Auto starting next.js app
+--- $ npx crete-next-app@latest
+--- or with typescript
+--- $ npx crete-next-app@latest --typescript
 
 Project at:
 --- github.com/pkellner/pluralsight-designing-react-components-course-code
