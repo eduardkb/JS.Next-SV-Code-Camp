@@ -1,11 +1,15 @@
 # CONFERENCE SPEAKER APP
 
 Manually starting next.js app
+--- $ npm init -y
+--- $ npm install react react-dom next
+--- add script commnds for next.js on package.json
+--- crete index.js file inside pages folder with initial component
 
 Auto starting next.js app
---- $ npx crete-next-app@latest
+--- $ npx crete-next-app <app_name>
 --- or with typescript
---- $ npx crete-next-app@latest --typescript
+--- $ npx crete-next-app --typescript <app_name>
 
 Project at:
 --- github.com/pkellner/pluralsight-designing-react-components-course-code
