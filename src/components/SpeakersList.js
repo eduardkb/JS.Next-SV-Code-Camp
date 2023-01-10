@@ -1,6 +1,8 @@
 import Speaker from "./Speaker";
 import ReactPlaceholder from "react-placeholder/lib";
-import useRequestSpeakers from "../hooks/userRequestSpeakers";
+import useRequestSpeakers, {
+  REQUEST_STATUS,
+} from "../hooks/userRequestSpeakers";
 
 function SpeakersList({ showSessions }) {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -11,10 +13,10 @@ function SpeakersList({ showSessions }) {
 
   // creating a custom hook with all hooks above on separate hooks script file
   // line below is destructuring all getters from the hooks on the function
-  const { speakerData, isLoading, hasErrored, error, onFavoriteToggle } =
+  const { speakerData, requestStatus, error, onFavoriteToggle } =
     useRequestSpeakers(2000);
 
-  if (hasErrored === true) {
+  if (requestStatus === REQUEST_STATUS.FAILURE) {
     return (
       <div className="text-danger">
         ERROR: <b>Loading speaker data failed: {error}</b>
@@ -31,7 +33,7 @@ function SpeakersList({ showSessions }) {
         type="media"
         rows={15}
         className="speakerslist-placeholder"
-        ready={isLoading === false}
+        ready={requestStatus === REQUEST_STATUS.SUCCESS}
       >
         <div className="row">
           {speakerData.map(function (speaker) {
