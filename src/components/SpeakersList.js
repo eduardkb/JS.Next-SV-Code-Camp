@@ -1,8 +1,7 @@
 import Speaker from "./Speaker";
 import ReactPlaceholder from "react-placeholder/lib";
-import useRequestSpeakers, {
-  REQUEST_STATUS,
-} from "../hooks/userRequestSpeakers";
+import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
+import { data } from "../../SpeakerData";
 
 function SpeakersList({ showSessions }) {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -13,8 +12,12 @@ function SpeakersList({ showSessions }) {
 
   // creating a custom hook with all hooks above on separate hooks script file
   // line below is destructuring all getters from the hooks on the function
-  const { speakerData, requestStatus, error, onFavoriteToggle } =
-    useRequestSpeakers(2000);
+  const {
+    data: speakerData,
+    requestStatus,
+    error,
+    updateRecord,
+  } = useRequestDelay(2000, data);
 
   if (requestStatus === REQUEST_STATUS.FAILURE) {
     return (
@@ -43,7 +46,10 @@ function SpeakersList({ showSessions }) {
                 speaker={speaker}
                 showSessions={showSessions}
                 onFavoriteToggle={() => {
-                  onFavoriteToggle(speaker.id);
+                  updateRecord({
+                    ...speaker,
+                    favorite: !speaker.favorite,
+                  });
                 }}
               />
             );
