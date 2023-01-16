@@ -1,7 +1,7 @@
 import Speaker from "./Speaker";
-import ReactPlaceholder from "react-placeholder/lib";
 import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
 import { data } from "../../SpeakerData";
+import { CButton, CSpinner } from "@coreui/react";
 
 function SpeakersList({ showSessions }) {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -27,35 +27,52 @@ function SpeakersList({ showSessions }) {
     );
   }
 
-  // line below not needed anymore. dony by PlaceHolder on return below
-  //if (isLoading === true) return <div>Loading...</div>;
+  // if status is loading, displays a loading message
+  if (requestStatus === REQUEST_STATUS.LOADING) {
+    return (
+      <div className="speakerslist-placeholder d-flex justify-content-center">
+        <CButton disabled>
+          <CSpinner
+            component="span"
+            size="sm"
+            aria-hidden="true"
+            visuallyHiddenLabel
+          />
+          {"  "}
+          Content is Loading...
+        </CButton>
+      </div>
+    );
+  }
 
   return (
     <div className="container speakers-list">
-      <ReactPlaceholder
+      {/* 
+        // OLD PLACEHOLDER. ONLY ACCEPTS NODE v.16
+        <ReactPlaceholder
         type="media"
         rows={15}
         className="speakerslist-placeholder"
         ready={requestStatus === REQUEST_STATUS.SUCCESS}
-      >
-        <div className="row">
-          {speakerData.map(function (speaker) {
-            return (
-              <Speaker
-                key={speaker.id}
-                speaker={speaker}
-                showSessions={showSessions}
-                onFavoriteToggle={() => {
-                  updateRecord({
-                    ...speaker,
-                    favorite: !speaker.favorite,
-                  });
-                }}
-              />
-            );
-          })}
-        </div>
-      </ReactPlaceholder>
+      > */}
+      <div className="row">
+        {speakerData.map(function (speaker) {
+          return (
+            <Speaker
+              key={speaker.id}
+              speaker={speaker}
+              showSessions={showSessions}
+              onFavoriteToggle={() => {
+                updateRecord({
+                  ...speaker,
+                  favorite: !speaker.favorite,
+                });
+              }}
+            />
+          );
+        })}
+      </div>
+      {/* </ReactPlaceholder> */}
     </div>
   );
 }
