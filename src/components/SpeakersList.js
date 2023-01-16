@@ -2,6 +2,8 @@ import Speaker from "./Speaker";
 import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
 import { data } from "../../SpeakerData";
 import { CButton, CSpinner } from "@coreui/react";
+import "rsuite/dist/rsuite.min.css";
+import { Placeholder, Loader } from "rsuite";
 
 function SpeakersList({ showSessions }) {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -17,7 +19,7 @@ function SpeakersList({ showSessions }) {
     requestStatus,
     error,
     updateRecord,
-  } = useRequestDelay(2000, data);
+  } = useRequestDelay(3000, data);
 
   if (requestStatus === REQUEST_STATUS.FAILURE) {
     return (
@@ -30,25 +32,37 @@ function SpeakersList({ showSessions }) {
   // if status is loading, displays a loading message
   if (requestStatus === REQUEST_STATUS.LOADING) {
     return (
-      <div className="speakerslist-placeholder d-flex justify-content-center">
-        <CButton disabled>
-          <CSpinner
-            component="span"
-            size="sm"
-            aria-hidden="true"
-            visuallyHiddenLabel
-          />
-          {"  "}
-          Content is Loading...
-        </CButton>
-      </div>
+      // component below is from library "coreui"
+      <>
+        <div className="d-flex justify-content-center">
+          <CButton disabled>
+            <CSpinner
+              component="span"
+              size="sm"
+              aria-hidden="true"
+              visuallyHiddenLabel
+            />
+            {"  "}
+            Content is Loading...
+          </CButton>
+        </div>
+
+        <br />
+        <br />
+        <br />
+
+        {/* // placeholder below from library "rsuite" */}
+        <div>
+          <Placeholder.Grid rows={5} columns={6} active />
+        </div>
+      </>
     );
   }
 
   return (
     <div className="container speakers-list">
       {/* 
-        // OLD PLACEHOLDER. ONLY ACCEPTS NODE v.16
+        // OLD PLACEHOLDER. ONLY ACCEPTS NODE v.16 (from library react-placeholder)
         <ReactPlaceholder
         type="media"
         rows={15}
