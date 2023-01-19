@@ -35,9 +35,10 @@ function SpeakerFavorite({ favorite, onFavoriteToggle }) {
   const [inTransition, setInTransition] = useState(false);
   function doneCallback() {
     setInTransition(false);
-    console.log(
-      `In speakerfavorite:doneCallback   ${new Date().getMilliseconds()}`
-    );
+    // lines to log and debug the favorite toggle
+    // console.log(
+    //   `In speakerfavorite:doneCallback   ${new Date().getMilliseconds()}`
+    // );
   }
   return (
     <div className="action padB1">
@@ -52,7 +53,9 @@ function SpeakerFavorite({ favorite, onFavoriteToggle }) {
             favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
           }
         />{" "}
-        Favorite {/* Renders a spinning wheel if favorite is being toggled */}
+        Favorite
+        {/* Renders a spinning wheel if favorite is being toggled */}
+        {/* with optimisticUI the spinning circle is not really necessary */}
         {inTransition ? (
           <span className="fas fa-circle-notch fa-spin"></span>
         ) : null}

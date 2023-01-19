@@ -31,19 +31,26 @@ function useRequestDelay(delayTime = 1000) {
   }, []);
 
   function updateRecord(recordUpdated, doneCallback) {
+    const originalRecords = [...data];
     const newRecords = data.map(function (rec) {
       return rec.id === recordUpdated.id ? recordUpdated : rec;
     });
 
     async function delayFunction() {
       try {
-        await delay(delayTime);
+        //optimisticUI - update value on interface and then start action on backend
         setData(newRecords);
+        await delay(delayTime);
         if (doneCallback) {
           doneCallback();
         }
       } catch (error) {
         console.log("error thrown inside delayFunction", error);
+        if (doneCallback) {
+          doneCallback();
+        }
+        // if update falis after the optimistic UI update revert data to old value
+        setData(originalRecords);
       }
     }
     delayFunction();

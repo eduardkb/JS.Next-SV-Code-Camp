@@ -47,3 +47,4 @@ to Run dev server (scripts section in package.json)
 ## TODO
 
     - Investigate rsuite placeholder error on console (does not work on App while being alone and with no parameters)
+    - research useEffect uses
