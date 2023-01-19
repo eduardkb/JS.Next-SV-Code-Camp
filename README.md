@@ -1,4 +1,31 @@
-# CONFERENCE SPEAKER APP
+### CONFERENCE SPEAKER APP
+
+# COMPONENTS TREE
+
+- App
+  - Header - # USES: useState
+  - Speakers - # USES: useState
+    - SpeakersToolbar
+    - SpeakersList - # USES: custom hook
+      - Speaker
+        - SpeakerImage
+        - SpeakerDemographics
+          - SpeakerFavorite
+
+# HOOKS
+
+    On App Component
+        Hook: theme, setTheme
+            theme used on App component to change site theme
+            Header
+                receives theme
+                    theme used on Header component to change theme
+            Speakers (receives theme and setTheme)
+                SpeakersToolbar (receives theme and setTheme)
+                    theme is used to set value on input field
+                    setTheme is used by seting value using dropdown value
+
+# NOTES
 
 Manually starting next.js app
 --- $ npm init -y
@@ -17,7 +44,6 @@ Project at:
 to Run dev server (scripts section in package.json)
 ---$ npm run dev
 
-TODO
+## TODO
 
-- fix logo in header (header.js)
-  - not loading png files
+    - Investigate rsuite placeholder error on console (does not work on App while being alone and with no parameters)

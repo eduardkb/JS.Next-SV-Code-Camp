@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { data as fileData } from "../../SpeakerData";
 
 export const REQUEST_STATUS = {
   LOADING: "loading",
@@ -6,10 +7,10 @@ export const REQUEST_STATUS = {
   FAILURE: "failure",
 };
 
-function useRequestDelay(delayTime = 1000, initialData = []) {
-  const [data, setData] = useState(initialData);
+function useRequestDelay(delayTime = 1000) {
+  const [data, setData] = useState(fileData);
   const [requestStatus, setRequestStatus] = useState(REQUEST_STATUS.LOADING);
-  const [error, seetError] = useState("");
+  const [error, setError] = useState("");
 
   // create delay function
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -23,13 +24,13 @@ function useRequestDelay(delayTime = 1000, initialData = []) {
         setData(data);
       } catch (e) {
         setRequestStatus(REQUEST_STATUS.FAILURE);
-        seetError(e);
+        setError(e);
       }
     }
     delayFunc();
   }, []);
 
-  function updateRecord(recordUpdated) {
+  function updateRecord(recordUpdated, doneCallback) {
     const newRecords = data.map(function (rec) {
       return rec.id === recordUpdated.id ? recordUpdated : rec;
     });
@@ -38,6 +39,9 @@ function useRequestDelay(delayTime = 1000, initialData = []) {
       try {
         await delay(delayTime);
         setData(newRecords);
+        if (doneCallback) {
+          doneCallback();
+        }
       } catch (error) {
         console.log("error thrown inside delayFunction", error);
       }

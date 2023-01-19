@@ -1,9 +1,9 @@
 import Speaker from "./Speaker";
 import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
-import { data } from "../../SpeakerData";
+// import { data } from "../../SpeakerData";
 import { CButton, CSpinner } from "@coreui/react";
-import "rsuite/dist/rsuite.min.css";
-import { Placeholder, Loader } from "rsuite";
+// import "rsuite/dist/rsuite.min.css";
+// import { Placeholder } from "rsuite";
 
 function SpeakersList({ showSessions }) {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -19,7 +19,7 @@ function SpeakersList({ showSessions }) {
     requestStatus,
     error,
     updateRecord,
-  } = useRequestDelay(3000, data);
+  } = useRequestDelay(2000);
 
   if (requestStatus === REQUEST_STATUS.FAILURE) {
     return (
@@ -40,7 +40,7 @@ function SpeakersList({ showSessions }) {
               component="span"
               size="sm"
               aria-hidden="true"
-              visuallyHiddenLabel
+              visuallyHiddenLabel=""
             />
             {"  "}
             Content is Loading...
@@ -52,9 +52,11 @@ function SpeakersList({ showSessions }) {
         <br />
 
         {/* // placeholder below from library "rsuite" */}
-        <div>
-          <Placeholder.Grid rows={5} columns={6} active />
-        </div>
+        {/* // DOES NOT WORK OK. ERROR IN BROWSER CONSOLE */}
+        {/* <div className="pl-5 pr-5 container speakers-list">
+          <Placeholder.Paragraph style={{ marginTop: 30 }} rows={5} active /> */}
+        {/* <Placeholder.Grid rows={5} columns={6} active /> */}
+        {/* </div> */}
       </>
     );
   }
