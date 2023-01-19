@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Session({ title, room }) {
   //params above are same thing as destructuring line below
   //const { title, room } = props;
@@ -30,15 +32,30 @@ function SpeakerImage({ id, first, last }) {
 }
 
 function SpeakerFavorite({ favorite, onFavoriteToggle }) {
+  const [inTransition, setInTransition] = useState(false);
+  function doneCallback() {
+    setInTransition(false);
+    console.log(
+      `In speakerfavorite:doneCallback   ${new Date().getMilliseconds()}`
+    );
+  }
   return (
     <div className="action padB1">
-      <span onClick={onFavoriteToggle}>
+      <span
+        onClick={function () {
+          setInTransition(true);
+          return onFavoriteToggle(doneCallback);
+        }}
+      >
         <i
           className={
             favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
           }
         />{" "}
-        Favorite{" "}
+        Favorite {/* Renders a spinning wheel if favorite is being toggled */}
+        {inTransition ? (
+          <span className="fas fa-circle-notch fa-spin"></span>
+        ) : null}
       </span>
     </div>
   );
