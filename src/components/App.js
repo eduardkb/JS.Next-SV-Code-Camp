@@ -1,25 +1,20 @@
 import Header from "./Header";
-import { createContext, useState } from "react";
 import Speakers from "./Speakers";
 import Head from "next/head";
-
-// create the context for the theme state
-// and it is exported because it needs to be available in other components
-export const ThemeContext = createContext();
+import Layout from "./Layout";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  // normal way of declaring state and passwing it to children
+  // stete now declared in layout component and passed to
+  // children with Context
+  // const [theme, setTheme] = useState("light");
   return (
     <>
       <Head>
         <title>SV Code Camp</title>
       </Head>
-      <ThemeContext.Provider value={{ setTheme, theme }}>
-        <div
-          className={
-            theme === "light" ? "container-fluid light" : "container-fluid dark"
-          }
-        >
+      <Layout startingTheme="light">
+        <div>
           {/* lines below where used when passing parameters to each component
         app is now using React Context with the theme parameter */}
           {/* <Header theme={theme} />
@@ -28,7 +23,7 @@ function App() {
           <Header />
           <Speakers />
         </div>
-      </ThemeContext.Provider>
+      </Layout>
     </>
   );
 }
