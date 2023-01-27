@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    restart: always
+ 
+# run docker-compose (it is a different package. not docker)
+# $ docker-compose up -d
+
+# added line 'restart: always' restarts container if stopped on error or machine reboots
+
+# to rebuild image with new code and start new docker
+# docker-compose up -d --no-deps --build
