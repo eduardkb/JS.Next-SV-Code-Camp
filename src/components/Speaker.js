@@ -56,7 +56,8 @@ function SpeakerFavorite({ favorite, onFavoriteToggle }) {
         Favorite
         {/* Renders a spinning wheel if favorite is being toggled */}
         {/* with optimisticUI the spinning circle is not really necessary */}
-        {inTransition ? (
+        {"  "}
+	{inTransition ? (
           <span className="fas fa-circle-notch fa-spin"></span>
         ) : null}
       </span>

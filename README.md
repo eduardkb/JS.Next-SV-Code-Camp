@@ -76,6 +76,9 @@ to Run dev server (scripts section in package.json)
 		- Restart process
 			$ pm2 restart <PID>
 			$ pm2 restart all
+		
+		- Reload process after new build
+			$ pm2 rebuild 0
 			
 		- stop processes
 			$ pm2 stop <PID>
