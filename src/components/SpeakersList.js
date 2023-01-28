@@ -5,7 +5,7 @@ import { CButton, CSpinner } from "@coreui/react";
 // import "rsuite/dist/rsuite.min.css";
 // import { Placeholder } from "rsuite";
 
-function SpeakersList({ showSessions }) {
+function SpeakersList() {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
   // const [speakerData, setSpeakerData] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
@@ -77,7 +77,6 @@ function SpeakersList({ showSessions }) {
             <Speaker
               key={speaker.id}
               speaker={speaker}
-              showSessions={showSessions}
               onFavoriteToggle={(doneCallback) => {
                 updateRecord(
                   {
