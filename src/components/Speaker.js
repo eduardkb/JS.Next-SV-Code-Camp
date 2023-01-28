@@ -12,9 +12,20 @@ function Session({ title, room }) {
 }
 
 function Sessions({ sessions }) {
+  const { eventYear } = useContext(SpeakerFilterContext);
   return (
     <div className="sessionBox card h-250">
-      <Session {...sessions[0]} />
+      {sessions
+        .filter(function (session) {
+          return session.eventYear === eventYear;
+        })
+        .map(function (session) {
+          return (
+            <div className="session w-100" key={session.id}>
+              <Session {...session} />
+            </div>
+          );
+        })}
     </div>
   );
 }

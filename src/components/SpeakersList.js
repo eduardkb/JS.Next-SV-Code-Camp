@@ -1,9 +1,11 @@
+import { useContext } from "react";
 import Speaker from "./Speaker";
 import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
 // import { data } from "../../SpeakerData";
 import { CButton, CSpinner } from "@coreui/react";
 // import "rsuite/dist/rsuite.min.css";
 // import { Placeholder } from "rsuite";
+import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 
 function SpeakersList() {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -20,6 +22,8 @@ function SpeakersList() {
     error,
     updateRecord,
   } = useRequestDelay(2000);
+
+  const { searchQuery, eventYear } = useContext(SpeakerFilterContext);
 
   if (requestStatus === REQUEST_STATUS.FAILURE) {
     return (
@@ -72,23 +76,35 @@ function SpeakersList() {
         ready={requestStatus === REQUEST_STATUS.SUCCESS}
       > */}
       <div className="row">
-        {speakerData.map(function (speaker) {
-          return (
-            <Speaker
-              key={speaker.id}
-              speaker={speaker}
-              onFavoriteToggle={(doneCallback) => {
-                updateRecord(
-                  {
-                    ...speaker,
-                    favorite: !speaker.favorite,
-                  },
-                  doneCallback
-                );
-              }}
-            />
-          );
-        })}
+        {speakerData
+          .filter(function (speaker) {
+            return (
+              speaker.first.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              speaker.last.toLowerCase().includes(searchQuery.toLowerCase())
+            );
+          })
+          .filter(function (speaker) {
+            return speaker.sessions.find((session) => {
+              return session.eventYear === eventYear;
+            });
+          })
+          .map(function (speaker) {
+            return (
+              <Speaker
+                key={speaker.id}
+                speaker={speaker}
+                onFavoriteToggle={(doneCallback) => {
+                  updateRecord(
+                    {
+                      ...speaker,
+                      favorite: !speaker.favorite,
+                    },
+                    doneCallback
+                  );
+                }}
+              />
+            );
+          })}
       </div>
       {/* </ReactPlaceholder> */}
     </div>
