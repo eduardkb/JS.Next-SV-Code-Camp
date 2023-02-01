@@ -11,6 +11,7 @@
   - Speakers - # USES: useState
     - SpeakersToolbar
     - SpeakersList - # USES: custom hook
+      - SpeakerAdd
       - Speaker
         - SpeakerImage
         - SpeakerDemographics

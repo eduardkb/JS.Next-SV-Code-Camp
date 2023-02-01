@@ -6,6 +6,7 @@ import { CButton, CSpinner } from "@coreui/react";
 // import "rsuite/dist/rsuite.min.css";
 // import { Placeholder } from "rsuite";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
+import SpeakerAdd from "./SpeakerAdd";
 
 function SpeakersList() {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
@@ -77,6 +78,7 @@ function SpeakersList() {
         className="speakerslist-placeholder"
         ready={requestStatus === REQUEST_STATUS.SUCCESS}
       > */}
+      <SpeakerAdd eventYear={eventYear} insertRecord={insertRecord} />
       <div className="row">
         {speakerData
           .filter(function (speaker) {

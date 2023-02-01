@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { SpeakerProvider, SpeakerContext } from "../contexts/SpeakerContext";
+import SpeakerDelete from "./SpeakerDelete";
 
 function Session({ title, room }) {
   //params above are same thing as destructuring line below
@@ -139,6 +140,7 @@ function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
           <SpeakerDemographics />
         </div>
         {showSessions === true ? <Sessions /> : null}
+        <SpeakerDelete />
       </div>
     </SpeakerProvider>
   );
