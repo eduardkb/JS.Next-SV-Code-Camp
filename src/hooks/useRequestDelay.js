@@ -30,10 +30,58 @@ function useRequestDelay(delayTime = 1000) {
     delayFunc();
   }, []);
 
-  function updateRecord(recordUpdated, doneCallback) {
+  function updateRecord(record, doneCallback) {
     const originalRecords = [...data];
     const newRecords = data.map(function (rec) {
-      return rec.id === recordUpdated.id ? recordUpdated : rec;
+      return rec.id === record.id ? record : rec;
+    });
+
+    async function delayFunction() {
+      try {
+        //optimisticUI - update value on interface and then start action on backend
+        setData(newRecords);
+        await delay(delayTime);
+        if (doneCallback) {
+          doneCallback();
+        }
+      } catch (error) {
+        console.log("error thrown inside delayFunction", error);
+        if (doneCallback) {
+          doneCallback();
+        }
+        // if update falis after the optimistic UI update revert data to old value
+        setData(originalRecords);
+      }
+    }
+    delayFunction();
+  }
+  function insertRecord(record, doneCallback) {
+    const originalRecords = [...data];
+    const newRecords = [record, ...data];
+
+    async function delayFunction() {
+      try {
+        //optimisticUI - update value on interface and then start action on backend
+        setData(newRecords);
+        await delay(delayTime);
+        if (doneCallback) {
+          doneCallback();
+        }
+      } catch (error) {
+        console.log("error thrown inside delayFunction", error);
+        if (doneCallback) {
+          doneCallback();
+        }
+        // if update falis after the optimistic UI update revert data to old value
+        setData(originalRecords);
+      }
+    }
+    delayFunction();
+  }
+  function deleteRecord(record, doneCallback) {
+    const originalRecords = [...data];
+    const newRecords = data.filter(function (rec) {
+      return rec.id != record.id;
     });
 
     async function delayFunction() {
@@ -56,7 +104,14 @@ function useRequestDelay(delayTime = 1000) {
     delayFunction();
   }
 
-  return { data, requestStatus, error, updateRecord };
+  return {
+    data,
+    requestStatus,
+    error,
+    updateRecord,
+    insertRecord,
+    deleteRecord,
+  };
 }
 
 export default useRequestDelay;
