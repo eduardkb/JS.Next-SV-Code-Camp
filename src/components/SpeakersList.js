@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import Speaker from "./Speaker";
-import useRequestDelay, { REQUEST_STATUS } from "../hooks/useRequestDelay";
+
+import useRequestRest, { REQUEST_STATUS } from "../hooks/useRequestRest";
 // import { data } from "../../SpeakerData";
 import { CButton, CSpinner } from "@coreui/react";
 // import "rsuite/dist/rsuite.min.css";
@@ -24,7 +25,7 @@ function SpeakersList() {
     updateRecord,
     insertRecord,
     deleteRecord,
-  } = useRequestDelay(2000);
+  } = useRequestRest();
 
   const { searchQuery, eventYear } = useContext(SpeakerFilterContext);
 

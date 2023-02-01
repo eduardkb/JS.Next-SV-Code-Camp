@@ -46,6 +46,11 @@ Auto starting next.js app
 Project at:
 --- github.com/pkellner/pluralsight-designing-react-components-course-code
 
+libraries needed:
+--- npm install axios ## library to read API
+--- npm install rsuite ## to display placeholder
+--- npm install @coreui/react ## to display placeholder
+
 to Run dev server (scripts section in package.json)
 ---$ npm run dev
 

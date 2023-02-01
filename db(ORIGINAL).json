@@ -1,63 +1,13 @@
 {
   "speakers": [
     {
-      "id": "47347",
-      "first": "Cersi",
-      "last": "Lanister",
-      "bio": "Bio not entered yet",
-      "sessions": [
-        {
-          "id": "88888",
-          "title": "New Session For Cersi",
-          "room": {
-            "name": "Main Ball Room"
-          },
-          "eventYear": "2019"
-        }
-      ],
-      "favorite": true
-    },
-    {
-      "id": "47346",
-      "first": "Ben",
-      "last": "Stark",
-      "bio": "Bio not entered yet",
-      "sessions": [
-        {
-          "id": "88888",
-          "title": "New Session For Ben",
-          "room": {
-            "name": "Main Ball Room"
-          },
-          "eventYear": "2019"
-        }
-      ]
-    },
-    {
-      "id": "47345",
-      "first": "Daeneris",
-      "last": "snow",
-      "bio": "Bio not entered yet",
-      "sessions": [
-        {
-          "id": "88888",
-          "title": "New Session For Daeneris",
-          "room": {
-            "name": "Main Ball Room"
-          },
-          "eventYear": "2019"
-        }
-      ],
-      "favorite": true
-    },
-    {
       "id": "1269",
       "first": "Arun",
       "last": "Gupta",
       "company": "Amazon",
       "bio": "Arun Gupta is a Principal Open Source Technologist at Amazon Web Services. ",
       "twitterHandle": "arungupta",
-      "favorite": false,
+      "favorite": true,
       "sessions": [
         {
           "id": "32",
@@ -311,7 +261,7 @@
       "company": "Eventuate, Inc",
       "bio": "Founder of Eventuate, Author of POJOs in Action, creator of the original Cloud Foundry",
       "twitterHandle": "crichardson",
-      "favorite": true,
+      "favorite": false,
       "sessions": [
         {
           "id": "1011",
@@ -531,7 +481,7 @@
       "company": "PayPal",
       "bio": "Douglas Crockford discovered the JSON Data Interchange Format. He is also the author of _JavaScript: The Good Parts_. He has been called a guru, but he is actually more of a mahatma.",
       "twitterHandle": "notatweeter",
-      "favorite": false,
+      "favorite": true,
       "sessions": [
         {
           "id": "12",
@@ -859,7 +809,7 @@
       "company": "Moon Highway",
       "bio": "Eve Porcello is an instructor at Moon Highway, egghead.io, and LinkedIn Learning.",
       "twitterHandle": "eveporcello",
-      "favorite": false,
+      "favorite": true,
       "sessions": [
         {
           "id": "7548",
@@ -868,6 +818,73 @@
           "room": {
             "name": "Town Square B",
             "capacity": 130
+          }
+        }
+      ]
+    },
+    {
+      "id": "14918",
+      "first": "Claudia",
+      "last": "Galvan",
+      "company": "Early Stage Innovation",
+      "bio": "Claudia is a leading expert on product internationalization",
+      "twitterHandle": "cgalvan",
+      "favorite": false,
+      "sessions": [
+        {
+          "id": "4820",
+          "title": "Innovation for Women Engineers",
+          "eventYear": "2015",
+          "room": {
+            "name": "RE-311",
+            "capacity": 68
+          }
+        },
+        {
+          "id": "6012",
+          "title": "Internationalization at Startups",
+          "eventYear": "2016",
+          "room": {
+            "name": "S-160",
+            "capacity": 60
+          }
+        },
+        {
+          "id": "7341",
+          "title": "Advancing your Career through technical leadership skills ",
+          "eventYear": "2018",
+          "room": {
+            "name": "Town Square A",
+            "capacity": 130
+          }
+        },
+        {
+          "id": "7497",
+          "title": "GDPR and Privacy Around the World",
+          "eventYear": "2019",
+          "room": {
+            "name": "Fireside B",
+            "capacity": 80
+          }
+        }
+      ]
+    },
+    {
+      "id": "46769",
+      "first": "Mary",
+      "last": "Grygleski",
+      "company": "IBM",
+      "bio": "Mary is a passionate developer advocate by day, and a very active tech community organizer by night.",
+      "twitterHandle": "mgrygles",
+      "favorite": true,
+      "sessions": [
+        {
+          "id": "7549",
+          "title": "A Gentle Intro to Reactive Java Programming and Systems",
+          "eventYear": "2019",
+          "room": {
+            "name": "Fireside A",
+            "capacity": 80
           }
         }
       ]
