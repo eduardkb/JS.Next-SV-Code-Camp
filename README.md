@@ -18,36 +18,27 @@
 		to create, update and delete speakers
 
 ### COMPONENTS TREE
-- App
-  - Header - # USES: useState
-  - Speakers - # USES: useState
-    - SpeakersToolbar
-    - SpeakersList - # USES: custom hook
-      - SpeakerAdd
-      - Speaker
-        - SpeakerImage
-        - SpeakerDemographics
-          - SpeakerFavorite
+	- App
+		- Header - # USES: useState
+		- Speakers - # USES: useState
+			- SpeakersToolbar
+			- SpeakersList - # USES: custom hook
+			- SpeakerAdd
+			- Speaker
+				- SpeakerImage
+				- SpeakerDemographics
+				- SpeakerFavorite
 
-### NOTES
-Manually starting next.js app
---- $ npm init -y
---- $ npm install react react-dom next
---- add script commnds for next.js on package.json
---- crete index.js file inside pages folder with initial component
+### HOW TO RUN
+	Node version: 18
 
-Auto starting next.js app
---- $ npx crete-next-app <app_name>
---- or with typescript
---- $ npx crete-next-app --typescript <app_name>
+	node install
+	node run dev (starts server on port 4000)
 
-libraries needed:
---- npm install axios ## library to read API
---- npm install rsuite ## to display placeholder
---- npm install @coreui/react ## to display placeholder
-
-to Run dev server (scripts section in package.json)
----$ npm run dev
+	Libraries in use:
+	- npm install axios ## library to read API
+	- npm install rsuite ## to display placeholder
+	- npm install @coreui/react ## to display placeholder
 
 ### TODO
     - Investigate rsuite placeholder error on console (does not work on App while being alone and with no parameters)
