@@ -1,11 +1,23 @@
-### CONFERENCE SPEAKER APP
+# CONFERENCE SPEAKER APP
+### Description
+	CRUD Website developed in JavaScript and Next.js
+	RestAPI setup in Next.js to provide server side local database access
+	Uses Next.js and Axios to read data from API.
+	- Lists conference speakers
+	- Allows to add new speakers
+	- Allows to change favorite status
+	- Allows to delete speakers
 
-# PLURALSIGHT PROJECT ON:
-
+### PLURALSIGHT PROJECT ON:
     https://github.com/pkellner/pluralsight-designing-react-components-course-code
 
-# COMPONENTS TREE
+# RestAPI Addresses
+	- /api/speakers/  (GET)
+		to retreive data from file database
+	- /api/speakers/[id] (POST, PUT and DELETE)
+		to create, update and delete speakers
 
+### COMPONENTS TREE
 - App
   - Header - # USES: useState
   - Speakers - # USES: useState
@@ -17,21 +29,7 @@
         - SpeakerDemographics
           - SpeakerFavorite
 
-# HOOKS
-
-    On App Component
-        Hook: theme, setTheme
-            theme used on App component to change site theme
-            Header
-                receives theme
-                    theme used on Header component to change theme
-            Speakers (receives theme and setTheme)
-                SpeakersToolbar (receives theme and setTheme)
-                    theme is used to set value on input field
-                    setTheme is used by seting value using dropdown value
-
-# NOTES
-
+### NOTES
 Manually starting next.js app
 --- $ npm init -y
 --- $ npm install react react-dom next
@@ -43,9 +41,6 @@ Auto starting next.js app
 --- or with typescript
 --- $ npx crete-next-app --typescript <app_name>
 
-Project at:
---- github.com/pkellner/pluralsight-designing-react-components-course-code
-
 libraries needed:
 --- npm install axios ## library to read API
 --- npm install rsuite ## to display placeholder
@@ -54,13 +49,11 @@ libraries needed:
 to Run dev server (scripts section in package.json)
 ---$ npm run dev
 
-# TODO
-
+### TODO
     - Investigate rsuite placeholder error on console (does not work on App while being alone and with no parameters)
     - research useEffect uses
 
-# DEPLOY TO PRODUCTION SERVER
-
+### DEPLOY TO PRODUCTION SERVER WITH NGINX AND PM2
     Build Next.js page
     	npm run build
 
