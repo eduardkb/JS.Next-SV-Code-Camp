@@ -40,10 +40,6 @@
 	- npm install rsuite ## to display placeholder
 	- npm install @coreui/react ## to display placeholder
 
-### TODO
-    - Investigate rsuite placeholder error on console (does not work on App while being alone and with no parameters)
-    - research useEffect uses
-
 ### DEPLOY TO PRODUCTION SERVER WITH NGINX AND PM2
     Build Next.js page
     	npm run build
