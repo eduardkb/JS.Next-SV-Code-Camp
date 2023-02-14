@@ -2,6 +2,7 @@
 ### Description
 	CRUD Website developed in JavaScript and Next.js
 	RestAPI setup in Next.js to provide server side local database access
+	Database is a file in server's filesystem
 	Uses Next.js and Axios to read data from API.
 	- Lists conference speakers
 	- Allows to add new speakers
@@ -32,8 +33,8 @@
 ### HOW TO RUN
 	Node version: 18
 
-	node install
-	node run dev (starts server on port 4000)
+	npm install
+	npm run dev (starts server on port 4000)
 
 	Libraries in use:
 	- npm install axios ## library to read API
