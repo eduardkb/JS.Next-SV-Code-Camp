@@ -1,11 +1,9 @@
-import { useContext, useState } from "react";
+import React, { useState, useContext, memo } from "react";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import { SpeakerProvider, SpeakerContext } from "../contexts/SpeakerContext";
 import SpeakerDelete from "./SpeakerDelete";
 
 function Session({ title, room }) {
-  //params above are same thing as destructuring line below
-  //const { title, room } = props;
   return (
     <span className="session w-100">
       {title} <strong>Room: {room.name}</strong>
@@ -65,15 +63,15 @@ function SpeakerImage() {
 }
 
 function SpeakerFavorite() {
-  const [inTransition, setInTransition] = useState(false);
   const { speaker, updateRecord } = useContext(SpeakerContext);
+  const [inTransition, setInTransition] = useState(false);
   function doneCallback() {
     setInTransition(false);
-    // lines to log and debug the favorite toggle
-    // console.log(
-    //   `In speakerfavorite:doneCallback   ${new Date().getMilliseconds()}`
-    // );
+    console.log(
+      `In SpeakerFavorite:doneCallback    ${new Date().getMilliseconds()}`
+    );
   }
+
   return (
     <div className="action padB1">
       <span
@@ -95,10 +93,7 @@ function SpeakerFavorite() {
               : "fa fa-star-o orange"
           }
         />{" "}
-        Favorite
-        {/* Renders a spinning wheel if favorite is being toggled */}
-        {/* with optimisticUI the spinning circle is not really necessary */}
-        {"  "}
+        Favorite{" "}
         {inTransition ? (
           <span className="fas fa-circle-notch fa-spin"></span>
         ) : null}
@@ -135,8 +130,14 @@ function SpeakerDemographics() {
   );
 }
 
-function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
+const Speaker = memo(function Speaker({
+  speaker,
+  updateRecord,
+  insertRecord,
+  deleteRecord,
+}) {
   const { showSessions } = useContext(SpeakerFilterContext);
+  console.log(`speaker: ${speaker.id} ${speaker.first} ${speaker.last}`);
   return (
     <SpeakerProvider
       speaker={speaker}
@@ -145,7 +146,7 @@ function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
       deleteRecord={deleteRecord}
     >
       <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
-        <div className="card card-heigth p-4 mt-4">
+        <div className="card card-height p-4 mt-4">
           <SpeakerImage />
           <SpeakerDemographics />
         </div>
@@ -154,6 +155,11 @@ function Speaker({ speaker, updateRecord, insertRecord, deleteRecord }) {
       </div>
     </SpeakerProvider>
   );
+},
+areEqualSpeaker);
+
+function areEqualSpeaker(prevProps, nextProps) {
+  return prevProps.speaker.favorite === nextProps.speaker.favorite;
 }
 
-export default Speaker;
+export default React.memo(Speaker);

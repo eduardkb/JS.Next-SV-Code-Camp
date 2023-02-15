@@ -7,7 +7,7 @@
       "company": "Amazon",
       "bio": "Arun Gupta is a Principal Open Source Technologist at Amazon Web Services. ",
       "twitterHandle": "arungupta",
-      "favorite": true,
+      "favorite": false,
       "sessions": [
         {
           "id": "32",
@@ -481,7 +481,7 @@
       "company": "PayPal",
       "bio": "Douglas Crockford discovered the JSON Data Interchange Format. He is also the author of _JavaScript: The Good Parts_. He has been called a guru, but he is actually more of a mahatma.",
       "twitterHandle": "notatweeter",
-      "favorite": true,
+      "favorite": false,
       "sessions": [
         {
           "id": "12",
