@@ -8,6 +8,7 @@ import { CButton, CSpinner } from "@coreui/react";
 // import { Placeholder } from "rsuite";
 import { SpeakerFilterContext } from "../contexts/SpeakerFilterContext";
 import SpeakerAdd from "./SpeakerAdd";
+import ErrorBoundary from "./ErrorBoundary";
 
 function SpeakersList() {
   // hooks below are declared normally (without custom hooks with are groupings of hooks)
