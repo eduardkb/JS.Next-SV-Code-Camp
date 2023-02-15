@@ -115,7 +115,7 @@ function SpeakerDemographics() {
       </div>
       <SpeakerFavorite />
       <div>
-        <p className="card-description">{bio.substr(0,70)}</p>
+        <p className="card-description">{bio}</p>
         <div className="social d-flex flex-row mt-4">
           <div className="company">
             <h5>Company</h5>
